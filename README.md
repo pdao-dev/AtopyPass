@@ -151,3 +151,57 @@ If parsing fails, we store `ai_json = null` and still keep the record draft.
 ### Install
 ```bash
 npm install
+````
+
+### Configure env
+
+Create `.env.local`:
+
+```bash
+# Solana
+NEXT_PUBLIC_SOLANA_CLUSTER=devnet
+NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
+
+# SQLite
+SQLITE_PATH=./data/atopypass.db
+
+# LLM (server-only)
+LLM_API_KEY=YOUR_KEY
+LLM_MODEL=YOUR_MODEL
+```
+
+### Run
+
+```bash
+npm run dev
+```
+
+Open:
+
+* User UI: `http://localhost:3000/`
+* Doctor UI: `http://localhost:3000/doctor`
+
+> Note: Because SQLite uses native modules, API routes must run on Node runtime (not Edge).
+
+---
+
+## Security & Privacy Notes
+
+* **Never** store personal health text on-chain.
+* On-chain: hashes + grant/revoke events only.
+* AI is restricted to summarization & extraction (no diagnosis/medical instructions).
+
+---
+
+## Roadmap (post-hackathon)
+
+* Client-side encryption for off-chain records (end-to-end sharing)
+* N-of-1 personal experiments (protocol commit + result commit)
+* Community trigger graph (optional)
+* Research opt-in pools (consent-based)
+
+---
+
+## License
+
+Apache 2.0 License
