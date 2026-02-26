@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Next.js
+web/.next/
+web/out/
+
+# SQLite data
+web/data/
+*.db
+*.db-journal
+*.db-wal
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Solana / Anchor
+target/
+test-ledger/
+.anchor/
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
