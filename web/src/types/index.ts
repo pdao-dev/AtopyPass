@@ -101,3 +101,21 @@ export interface DoctorRecordSummary {
   created_at: string;
   ai_summary?: string;
 }
+
+// ── User record list types ──
+
+export interface ConsentInfo {
+  doctor_pubkey: string;
+  expiry_ts: number;
+  revoked: number; // 0 | 1
+}
+
+export interface UserRecord {
+  record_hash: string;
+  created_at: string;
+  raw_text: string;
+  ai_json: string | null;
+  status: "draft" | "committed";
+  tx_sig_record: string | null;
+  consents: ConsentInfo[];
+}

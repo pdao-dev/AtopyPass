@@ -15,6 +15,7 @@ web/data/
 .env
 .env.local
 .env.*.local
+.omc
 
 # Solana / Anchor
 target/

@@ -18,10 +18,15 @@ export async function POST(req: NextRequest) {
 
   // Verify the transaction on-chain
   const conn = getConnection();
-  const txInfo = await conn.getTransaction(body.tx_sig, {
-    commitment: "confirmed",
-    maxSupportedTransactionVersion: 0,
-  });
+  let txInfo;
+  try {
+    txInfo = await conn.getTransaction(body.tx_sig, {
+      commitment: "confirmed",
+      maxSupportedTransactionVersion: 0,
+    });
+  } catch {
+    return NextResponse.json({ error: "Invalid transaction signature" }, { status: 400 });
+  }
 
   if (!txInfo) {
     return NextResponse.json({ error: "Transaction not found" }, { status: 404 });
