@@ -32,8 +32,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Transaction not found" }, { status: 404 });
   }
 
-  // Find memo instruction and verify
+  // Verify tx signer matches owner_pubkey
   const accountKeys = txInfo.transaction.message.getAccountKeys();
+  const signer = accountKeys.get(0);
+  if (!signer || signer.toBase58() !== body.owner_pubkey) {
+    return NextResponse.json({ error: "Signer mismatch" }, { status: 403 });
+  }
+
+  // Find memo instruction and verify
   const instructions = txInfo.transaction.message.compiledInstructions;
 
   let memoData: string | null = null;

@@ -297,7 +297,6 @@ Failure mode:
 * Add sample data button
 * Improve UX: loading/error states, empty states
 * Prepare demo script + 60s pitch
-* If time remains: Anchor consent program stretch (only if MVP stable)
 
 ---
 

@@ -164,7 +164,7 @@ Never expose server secrets to client.
 ## Roles (humans)
 - 주영: Frontend + UX + demo polish
 - 진형: Backend + SQLite + AI + tx verification
-- 현재: Solana protocol + tx builders (+ optional Anchor stretch)
+- 현재: Solana protocol + tx builders
 
 ---
 
