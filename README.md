@@ -143,45 +143,59 @@ If parsing fails, we store `ai_json = null` and still keep the record draft.
 ## Getting Started
 
 ### Prerequisites
-- Node.js 18+ (or 20+)
+- Node.js 20+
 - A Solana wallet (e.g., Phantom) set to **devnet**
-- Devnet SOL for testing (airdrop)
-- LLM API key (server-side)
+- Devnet SOL for testing (`solana airdrop 2`)
+- (Optional) LLM API key — AI 분석 없이도 기록/커밋/공유/철회 플로우는 동작합니다
 
 ### Install
+
 ```bash
+cd web
 npm install
-````
+```
 
 ### Configure env
 
-Create `.env.local`:
+```bash
+cp .env.example .env.local
+```
+
+`.env.local`을 열고 필요한 값을 설정합니다:
 
 ```bash
-# Solana
-NEXT_PUBLIC_SOLANA_CLUSTER=devnet
+# Solana (기본값 devnet — 수정 불필요)
 NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
+NEXT_PUBLIC_SOLANA_CLUSTER=devnet
 
-# SQLite
+# SQLite (기본값 — 수정 불필요)
 SQLITE_PATH=./data/atopypass.db
 
-# LLM (server-only)
-LLM_API_KEY=YOUR_KEY
-LLM_MODEL=YOUR_MODEL
+# LLM (선택사항 — 비워두면 AI 분석 생략, 나머지 기능은 정상 동작)
+LLM_API_KEY=
+LLM_MODEL=gpt-4o-mini
 ```
 
 ### Run
 
 ```bash
+cd web
 npm run dev
 ```
 
-Open:
+브라우저에서:
+- **사용자 페이지**: http://localhost:3000
+- **의사 페이지**: http://localhost:3000/doctor
 
-* User UI: `http://localhost:3000/`
-* Doctor UI: `http://localhost:3000/doctor`
+### Build (production)
 
-> Note: Because SQLite uses native modules, API routes must run on Node runtime (not Edge).
+```bash
+cd web
+npm run build
+npm start
+```
+
+> Note: SQLite 네이티브 모듈 사용으로 API 라우트는 Node.js 런타임에서만 동작합니다 (Edge 미지원).
 
 ---
 
