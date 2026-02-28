@@ -24,7 +24,7 @@ On-chain contains **no personal health text** — only hashes + consent events.
 
 ---
 
-## MVP Demo Flow (what we show in the hackathon)
+## Demo Flow
 1. User connects wallet  
 2. User submits a chat log  
 3. AI shows:
@@ -53,7 +53,7 @@ On-chain contains **no personal health text** — only hashes + consent events.
 - **DB**: SQLite (`better-sqlite3`)
 - **AI**: server-side LLM call (1 call per draft)
 - **Solana**: `@solana/web3.js` + Wallet Adapter
-- **On-chain**: Memo Program only (no program deployment for MVP)
+- **On-chain**: Memo Program only (no custom program deployment)
 
 ### Why Solana?
 Health data is less about “where it lives” and more about:
@@ -207,7 +207,7 @@ npm start
 
 ---
 
-## Roadmap (post-hackathon)
+## Roadmap
 
 * Client-side encryption for off-chain records (end-to-end sharing)
 * N-of-1 personal experiments (protocol commit + result commit)
